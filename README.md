@@ -1,16 +1,82 @@
-# React + Vite
+NASA APOD Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a full-stack application that fetches NASA's Astronomy Picture of the Day (APOD) using a custom-built backend service and displays it through a responsive frontend UI.
 
-Currently, two official plugins are available:
+It includes:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. A REST-compliant backend with caching
 
-## React Compiler
+2. A React-based frontend for viewing APOD images
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+3. Secure handling of API keys
 
-## Expanding the ESLint configuration
+4. Local development support for both backend and frontend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Backend Features : -
+
+1. Fetches APOD data from NASA API
+
+2. In-memory caching with TTL + max size
+
+3. Secure .env environment variable loading
+
+4. RESTful endpoints:
+
+     GET /api/apod/today
+
+     GET /api/apod/:date
+
+     GET /api/apod?start=YYYY-MM-DD&end=YYYY-MM-DD
+
+     GET /api/apod?count=N
+
+5. Centralized error handler
+
+6. Runs locally via Node.js
+
+Backend Setup
+cd backend
+npm install
+
+Create a .env file:
+NASA_API_KEY=YOUR_KEY
+PORT=5000
+CACHE_TTL=3600
+CACHE_SIZE=100
+
+Start backend:
+npm start
+
+Frontend Features : - 
+
+1. View today's APOD
+
+2. Search APOD by date
+
+3. View a range of APODs
+
+4. Browse recent images
+
+5. Responsive UI
+
+Frontend Setup
+cd frontend
+npm install
+npm run dev
+
+Set API root (optional) in .env:
+VITE_API_ROOT=http://localhost:5000/api/apod
+
+Running Full Project : - 
+Open two terminals:
+
+Terminal 1 (Backend):
+cd backend
+npm start
+
+Terminal 2 (Frontend):
+cd frontend
+npm run dev
+
+Visit:
+http://localhost:5173
